@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import Link from "next/link";
 import { Button } from "@nextui-org/react";
 
 export default function Page(){
@@ -11,11 +12,16 @@ export default function Page(){
     }
         
     return (
-            <main>
-                <p>private</p>
-                <form action={signout}>
-                    <Button type="submit" color="danger">Signout</Button>
-                </form>
-            </main>
+            <>
+                <div className="flex justify-between">
+                    <h1 className="text-3xl font-bold mb-5">My tasks</h1>
+                    <Link href="/private/newtask" color="primary">
+                        <Button color="primary">New task</Button>
+                    </Link>
+                </div>
+                <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
+                </div>
+            </>
+                
         )
 }

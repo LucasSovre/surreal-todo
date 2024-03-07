@@ -12,7 +12,7 @@ export async function surrealAuthQuerry(query: string){
                 'Accept': 'application/json',
                 'NS': "todo",
                 'DB': "todo",
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${token.value}`
             },
             body: query
         });
@@ -20,6 +20,8 @@ export async function surrealAuthQuerry(query: string){
         if (response.status === 401){
             throw new Error('Not authenticated');
         }
+
+        return response;
     }else{
         throw new Error('Not authenticated');
     }
