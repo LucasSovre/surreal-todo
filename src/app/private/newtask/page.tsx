@@ -13,10 +13,10 @@ export default function Page(){
             CREATE task CONTENT {
                 name : "${name}",
                 description : "${description}",
-                status : "${status}",
+                state : "${status}",
             };
         `);
-        if(response.status === 200){
+        if(response[0].status === "OK"){
             redirect('/private');
         }
       }

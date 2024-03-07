@@ -1,15 +1,9 @@
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
+import { Suspense } from "react";
+import AllTask from "@/components/allTask";
 
 export default function Page(){
-
-    async function signout(){
-        'use server';
-        cookies().delete('token');
-        redirect('/');
-    }
         
     return (
             <>
@@ -19,8 +13,9 @@ export default function Page(){
                         <Button color="primary">New task</Button>
                     </Link>
                 </div>
-                <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
-                </div>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <AllTask />
+                </Suspense>
             </>
                 
         )

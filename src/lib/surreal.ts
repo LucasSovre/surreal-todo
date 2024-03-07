@@ -5,6 +5,13 @@ export async function surrealAuthQuerry(query: string){
     if(token){
         const url = process.env.NEXT_BACKEND_URL + '/sql';
 
+        //fake wait for 2 seconds
+        // await new Promise((resolve) => {
+        //     setTimeout(() => {
+        //         resolve();
+        //     }, 2000);
+        // });
+
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -20,8 +27,8 @@ export async function surrealAuthQuerry(query: string){
         if (response.status === 401){
             throw new Error('Not authenticated');
         }
-
-        return response;
+        const data = await response.json();
+        return data;
     }else{
         throw new Error('Not authenticated');
     }
