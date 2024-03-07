@@ -67,8 +67,6 @@ export async function surrealSignup(email:string, password:string, firstName:str
         }
     );
 
-    console.log("body",body);
-    console.log("url",url);
     const response = await fetch(url, {
         method: 'POST',
         headers: {
