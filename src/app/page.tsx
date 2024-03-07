@@ -14,7 +14,8 @@ export default function Page() {
       //go to /private page
       redirect('/private');
     }else{
-      throw new Error('Signup failed');
+      //add error to querry url
+      redirect('/?error=Invalid email or password');
     }
   }
 
